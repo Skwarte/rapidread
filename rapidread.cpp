@@ -46,7 +46,7 @@ void processFile(string str)
     {
         file >> word;
         cout << word << endl;
-		usleep(SECOND);
+		usleep(SECOND/(3));
     }
 }
 
