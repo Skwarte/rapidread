@@ -1,8 +1,11 @@
-#include <algorithm>
-#include <fstream>
-#include <string>
-#include <iostream>
-#include "rapidread.h"
+#include    <algorithm>
+#include    <fstream>
+#include    <string>
+#include    <iostream>
+#include    <unistd.h>
+#include    "rapidread.h"
+
+#define SECOND  1000000 
 string findFileEx(string s)
 {
     int len = s.length(); 
@@ -25,14 +28,26 @@ string findFileEx(string s)
 bool supported(string str) 
 {
     bool supported = false;
-    cout << "supported: " << supported << endl;
-    if(str == ".txt")
+    if(str.compare(".txt"))
         supported = true;
 //   else if(str == ".pdf")
 //     supported = true;
 //  else
 //      supported = false;
+	cout << supported << endl;
     return supported;
+}
+
+void processFile(string str)
+{
+    string word;
+    file.open(str); 
+    while(file) 
+    {
+        file >> word;
+        cout << word << endl;
+		usleep(SECOND);
+    }
 }
 
 int main(int argc, char* argv[]) 
@@ -40,4 +55,9 @@ int main(int argc, char* argv[])
     string fileName = argv[1];
     string fileType = findFileEx(fileName);
     bool supp = supported(fileType);
+	cout << supp << endl;
+    if(supp == true)
+    {
+        processFile(fileName);
+    }
 } 
