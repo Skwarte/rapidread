@@ -1,0 +1,5 @@
+Note that the file's name is only used once in the entire program, when the
+file is opened. After that, the file is accessed through the ifstream
+variable. The ifstream variable name can be any legal variable name (in,
+inputFile, data, ...) and does not have to have anything to do with the name
+of the file.
