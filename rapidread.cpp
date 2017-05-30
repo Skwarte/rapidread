@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <fstream>
 #include <string>
 #include <iostream>
@@ -17,10 +18,26 @@ string findFileEx(string s)
             fileType+=s[i]; 
         }   
     }
+    transform(fileType.begin(), fileType.end(), fileType.begin(), ::tolower);
     return fileType;
 }
+
+bool supported(string str) 
+{
+    bool supported = false;
+    cout << "supported: " << supported << endl;
+    if(str == ".txt")
+        supported = true;
+//   else if(str == ".pdf")
+//     supported = true;
+//  else
+//      supported = false;
+    return supported;
+}
+
 int main(int argc, char* argv[]) 
 {
     string fileName = argv[1];
-    string ret = findFileEx(fileName);
+    string fileType = findFileEx(fileName);
+    bool supp = supported(fileType);
 } 
