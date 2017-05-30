@@ -5,7 +5,7 @@
 #include    <unistd.h>
 #include    "rapidread.h"
 
-#define SECOND  1000000 
+#define MIN  60000000 
 string findFileEx(string s)
 {
     int len = s.length(); 
@@ -38,15 +38,15 @@ bool supported(string str)
     return supported;
 }
 
-void processFile(string str)
+void txtProcess(string str)
 {
     string word;
-    file.open(str); 
+    file.open(str.c_str()); 
     while(file) 
     {
         file >> word;
         cout << word << endl;
-		usleep(SECOND/(3));
+		usleep(MIN/450); //insert wpm number
     }
 }
 
@@ -58,6 +58,6 @@ int main(int argc, char* argv[])
 	cout << supp << endl;
     if(supp == true)
     {
-        processFile(fileName);
+        txtProcess(fileName);
     }
 } 
